@@ -90,11 +90,7 @@ export default function Login() {
           </form>
         </div>
         <div style={styles.imageSection}>
-          <img
-            src="/mnt/data/7a30a8e9-5538-4521-8dc6-62a121a16c94.png"
-            alt="Login Illustration"
-            style={styles.image}
-          />
+          <div style={styles.image}>🎓</div>
         </div>
       </div>
     </div>
@@ -107,7 +103,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    background: '#f4f6f8',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     padding: '20px',
     fontFamily: "'Inter', sans-serif",
   },
@@ -115,81 +111,98 @@ const styles = {
     display: 'flex',
     width: '900px',
     maxWidth: '100%',
-    borderRadius: '20px',
+    borderRadius: '24px',
     overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
-    background: '#fff',
+    boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+    background: 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
   },
   formSection: {
     flex: 1,
-    padding: '60px 50px',
+    padding: '50px 40px',
   },
   heading: {
-    fontSize: '36px',
+    fontSize: '32px',
     marginBottom: '10px',
     fontWeight: '700',
-    color: '#111',
+    color: '#2d3748',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
   },
   subheading: {
     fontSize: '16px',
     marginBottom: '40px',
-    color: '#666',
+    color: '#4a5568',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
   },
   input: {
-    padding: '14px 18px',
+    padding: '16px 20px',
     marginBottom: '20px',
-    borderRadius: '12px',
-    border: '1px solid #e0e0e0',
+    borderRadius: '10px',
+    border: '2px solid #e2e8f0',
     fontSize: '16px',
     outline: 'none',
     transition: 'all 0.3s',
+    background: 'rgba(255, 255, 255, 0.9)',
   },
   inputFocus: {
-    borderColor: '#3399ff',
-    boxShadow: '0 0 5px rgba(51,153,255,0.3)',
+    borderColor: '#667eea',
+    boxShadow: '0 0 0 3px rgba(102, 126, 234, 0.1)',
   },
   button: {
-    padding: '14px',
-    background: '#3399ff',
+    padding: '16px',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     border: 'none',
-    borderRadius: '12px',
+    borderRadius: '10px',
     color: '#fff',
     fontSize: '16px',
     fontWeight: '600',
     cursor: 'pointer',
     marginBottom: '12px',
-    transition: 'background 0.3s',
+    transition: 'all 0.3s ease',
+  },
+  buttonHover: {
+    transform: 'translateY(-2px)',
+    boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
   },
   buttonDisabled: {
-    background: '#ccc',
+    background: '#a0aec0',
     cursor: 'not-allowed',
   },
   registerButton: {
     background: 'transparent',
     border: 'none',
-    color: '#3399ff',
+    color: '#667eea',
     cursor: 'pointer',
     textDecoration: 'underline',
     fontSize: '14px',
     fontWeight: '500',
+    transition: 'color 0.3s ease',
   },
   error: {
-    color: 'red',
+    color: '#e53e3e',
     marginBottom: '15px',
     fontSize: '14px',
+    background: 'rgba(229, 62, 62, 0.1)',
+    padding: '12px',
+    borderRadius: '8px',
+    border: '1px solid rgba(229, 62, 62, 0.2)',
   },
   imageSection: {
     flex: 1,
-    background: '#f0f4f8',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    fontSize: '120px',
+    color: 'rgba(255, 255, 255, 0.8)',
   },
 };

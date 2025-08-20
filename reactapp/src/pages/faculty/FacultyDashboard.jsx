@@ -69,8 +69,10 @@ export default function FacultyDashboard() {
       {/* Main Content */}
       <div style={styles.cardsContainer}>
         {/* Profile Card */}
-        <div style={styles.card}>
-          <div style={styles.profileCardHeader}>Faculty Profile</div>
+        <div style={styles.card} onMouseEnter={(e) => e.target.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}>
+          <div style={styles.profileCardHeader}>
+            👨‍🏫 Faculty Profile
+          </div>
           <div style={styles.profileContent}>
             <img src="https://via.placeholder.com/100" alt="Profile" style={styles.profileImage} />
             <div style={styles.profileDetails}>
@@ -85,21 +87,56 @@ export default function FacultyDashboard() {
         </div>
 
         {/* Actions Card */}
-        <div style={styles.card}>
-          <div style={styles.announcementHeader}>📌 Quick Actions</div>
+        <div style={styles.card} onMouseEnter={(e) => e.target.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}>
+          <div style={styles.announcementHeader}>
+            📌 Quick Actions
+          </div>
           <ul style={styles.announcementList}>
             <li style={styles.announcementItem}>
-              <button onClick={() => navigate(`/faculty/manage-courses/${username}`)} style={styles.actionBtn}>
+              <button 
+                onClick={() => navigate(`/faculty/manage-courses/${username}`)} 
+                style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
                 Manage / Enroll Students
               </button>
             </li>
             <li style={styles.announcementItem}>
-              <button onClick={() => navigate(`/faculty/assign-grades/${username}`)} style={styles.actionBtn}>
+              <button 
+                onClick={() => navigate(`/faculty/assign-grades/${username}`)} 
+                style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
                 Assign Grades
               </button>
             </li>
             <li style={styles.announcementItem}>
-              <button onClick={() => navigate(`/faculty/create-notifications/${username}`)} style={styles.actionBtn}>
+              <button 
+                onClick={() => navigate(`/faculty/create-notifications/${username}`)} 
+                style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
                 Create Notifications
               </button>
             </li>
@@ -114,25 +151,42 @@ export default function FacultyDashboard() {
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    background: "linear-gradient(to bottom right, #f0fdf4, #dbeafe)",
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     minHeight: "100vh",
     paddingBottom: "40px",
   },
   header: {
-    background: "linear-gradient(90deg, #047857, #10b981)",
+    background: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     color: "white",
     padding: "15px 30px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
     position: "sticky",
     top: 0,
     zIndex: 100,
   },
-  logo: { fontWeight: "bold", fontSize: "20px" },
+  logo: { 
+    fontWeight: "bold", 
+    fontSize: "24px",
+    background: "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
   nav: { display: "flex", alignItems: "center", gap: "15px" },
-  navLink: { color: "white", textDecoration: "none", fontWeight: "500", padding: "6px 12px", borderRadius: "6px", transition: "0.3s", background: "rgba(255,255,255,0.1)" },
+  navLink: { 
+    color: "white", 
+    textDecoration: "none", 
+    fontWeight: "500", 
+    padding: "8px 16px", 
+    borderRadius: "8px", 
+    transition: "all 0.3s ease", 
+    background: "rgba(255,255,255,0.1)",
+    border: "1px solid rgba(255,255,255,0.2)",
+  },
   profileWrapper: { position: "relative", display: "flex", alignItems: "center", cursor: "pointer" },
   profileIcon: { marginRight: "8px" },
   profileName: { fontWeight: "500", marginRight: "4px" },
@@ -141,9 +195,11 @@ const styles = {
     position: "absolute",
     top: "35px",
     right: 0,
-    backgroundColor: "white",
-    borderRadius: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "12px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     minWidth: "160px",
     overflow: "hidden",
     zIndex: 200,
@@ -157,8 +213,9 @@ const styles = {
     border: "none",
     cursor: "pointer",
     fontWeight: "500",
-    transition: "0.2s",
-    borderBottom: "1px solid #eee",
+    transition: "all 0.2s ease",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+    color: "#2d3748",
   },
   cardsContainer: {
     display: "flex",
@@ -170,46 +227,79 @@ const styles = {
   },
   card: {
     flex: "1 1 400px",
-    backgroundColor: "white",
-    borderRadius: "15px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "20px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     padding: "20px",
     minWidth: "350px",
-    transition: "0.3s",
+    transition: "all 0.3s ease",
   },
   profileCardHeader: {
-    fontSize: "18px",
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "15px",
-    color: "#047857",
-    borderBottom: "2px solid #bbf7d0",
+    color: "#667eea",
+    borderBottom: "2px solid rgba(102, 126, 234, 0.2)",
     paddingBottom: "5px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
   },
   profileContent: { display: "flex", gap: "20px", alignItems: "center" },
-  profileImage: { width: "100px", height: "100px", borderRadius: "50%", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" },
+  profileImage: { 
+    width: "100px", 
+    height: "100px", 
+    borderRadius: "50%", 
+    boxShadow: "0 8px 25px rgba(102, 126, 234, 0.3)",
+    border: "3px solid rgba(102, 126, 234, 0.2)",
+  },
   profileDetails: { lineHeight: "1.6", fontWeight: "500" },
   announcementHeader: {
-    fontSize: "18px",
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "12px",
-    color: "#059669",
-    borderBottom: "2px solid #d1fae5",
+    color: "#764ba2",
+    borderBottom: "2px solid rgba(118, 75, 162, 0.2)",
     paddingBottom: "5px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
   },
   announcementList: { listStyle: "none", padding: 0, margin: 0 },
   announcementItem: { padding: "10px 0", borderBottom: "1px solid #eee", fontWeight: "500" },
   actionBtn: {
-    background: "linear-gradient(90deg, #10b981, #34d399)",
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     color: "white",
     border: "none",
     padding: "10px 15px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     cursor: "pointer",
     fontWeight: "500",
     width: "100%",
     textAlign: "center",
-    transition: "0.3s",
+    transition: "all 0.3s ease",
   },
-  loading: { textAlign: "center", marginTop: "50px", fontSize: "18px", color: "#065f46" },
-  error: { textAlign: "center", marginTop: "50px", fontSize: "18px", color: "#b91c1c" },
+  loading: { 
+    textAlign: "center", 
+    marginTop: "50px", 
+    fontSize: "18px", 
+    color: "white",
+    background: "rgba(255, 255, 255, 0.1)",
+    padding: "20px",
+    borderRadius: "12px",
+    backdropFilter: "blur(10px)",
+  },
+  error: { 
+    textAlign: "center", 
+    marginTop: "50px", 
+    fontSize: "18px", 
+    color: "white",
+    background: "rgba(229, 62, 62, 0.2)",
+    padding: "20px",
+    borderRadius: "12px",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(229, 62, 62, 0.3)",
+  },
 };

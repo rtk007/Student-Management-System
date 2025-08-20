@@ -57,13 +57,21 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <div style={styles.cardsContainer}>
         {/* Faculties Card */}
-        <div style={styles.card}>
+        <div style={styles.card} onMouseEnter={(e) => e.target.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}>
           <div style={styles.cardHeader}>👨‍🏫 Manage Faculties</div>
           <ul style={styles.list}>
             <li style={styles.listItem}>
               <button
                 onClick={() => navigate(`/admin/faculty/${username}`)}
                 style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
               >
                 View All Faculties
               </button>
@@ -73,13 +81,21 @@ export default function AdminDashboard() {
         </div>
 
         {/* Students Card */}
-        <div style={styles.card}>
+        <div style={styles.card} onMouseEnter={(e) => e.target.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}>
           <div style={styles.cardHeader}>🎓 Manage Students</div>
           <ul style={styles.list}>
             <li style={styles.listItem}>
               <button
                 onClick={() => navigate(`/admin/student/${username}`)}
                 style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
               >
                 View All Students
               </button>
@@ -89,13 +105,21 @@ export default function AdminDashboard() {
         </div>
 
         {/* Courses Card */}
-        <div style={styles.card}>
+        <div style={styles.card} onMouseEnter={(e) => e.target.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.target.style.transform = "translateY(0)"}>
           <div style={styles.cardHeader}>📚 Manage Courses</div>
           <ul style={styles.list}>
             <li style={styles.listItem}>
               <button
                 onClick={() => navigate(`/admin/courses/${username}`)}
                 style={styles.actionBtn}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 8px 25px rgba(102, 126, 234, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
               >
                 View Courses
               </button>
@@ -112,32 +136,41 @@ export default function AdminDashboard() {
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    background: "linear-gradient(to bottom right, #fdf2f8, #e0f2fe)",
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     minHeight: "100vh",
     paddingBottom: "40px",
   },
   header: {
-    background: "linear-gradient(90deg, #1e3a8a, #3b82f6)",
+    background: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     color: "white",
     padding: "15px 30px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
     position: "sticky",
     top: 0,
     zIndex: 100,
   },
-  logo: { fontWeight: "bold", fontSize: "20px" },
+  logo: { 
+    fontWeight: "bold", 
+    fontSize: "24px",
+    background: "linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
   nav: { display: "flex", alignItems: "center", gap: "15px" },
   navLink: {
     color: "white",
     textDecoration: "none",
     fontWeight: "500",
-    padding: "6px 12px",
-    borderRadius: "6px",
-    transition: "0.3s",
+    padding: "8px 16px",
+    borderRadius: "8px",
+    transition: "all 0.3s ease",
     background: "rgba(255,255,255,0.1)",
+    border: "1px solid rgba(255,255,255,0.2)",
   },
   profileWrapper: {
     position: "relative",
@@ -152,9 +185,11 @@ const styles = {
     position: "absolute",
     top: "35px",
     right: 0,
-    backgroundColor: "white",
-    borderRadius: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "12px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     minWidth: "160px",
     overflow: "hidden",
     zIndex: 200,
@@ -168,8 +203,9 @@ const styles = {
     border: "none",
     cursor: "pointer",
     fontWeight: "500",
-    transition: "0.2s",
-    borderBottom: "1px solid #eee",
+    transition: "all 0.2s ease",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+    color: "#2d3748",
   },
   cardsContainer: {
     display: "flex",
@@ -181,37 +217,42 @@ const styles = {
   },
   card: {
     flex: "1 1 350px",
-    backgroundColor: "white",
-    borderRadius: "15px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "20px",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
     padding: "20px",
     minWidth: "320px",
-    transition: "0.3s",
+    transition: "all 0.3s ease",
   },
   cardHeader: {
-    fontSize: "18px",
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "12px",
-    color: "#1d4ed8",
-    borderBottom: "2px solid #bfdbfe",
+    color: "#667eea",
+    borderBottom: "2px solid rgba(102, 126, 234, 0.2)",
     paddingBottom: "5px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
   },
   list: { listStyle: "none", padding: 0, margin: 0 },
   listItem: {
     padding: "10px 0",
-    borderBottom: "1px solid #eee",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
     fontWeight: "500",
   },
   actionBtn: {
-    background: "linear-gradient(90deg, #2563eb, #3b82f6)",
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     color: "white",
     border: "none",
     padding: "10px 15px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     cursor: "pointer",
     fontWeight: "500",
     width: "100%",
     textAlign: "center",
-    transition: "0.3s",
+    transition: "all 0.3s ease",
   },
 };
