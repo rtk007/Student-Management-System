@@ -1,7 +1,6 @@
 // App.js
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
 
 import Login from "./pages/guest/Login";
 
@@ -50,21 +49,15 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0, rotateY: 90 }}
-        animate={{ opacity: 1, rotateY: 0 }}
-        exit={{ opacity: 0, rotateY: -90 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        style={{ perspective: "1200px" }}
-      >
+    
         <Routes location={location} key={location.pathname}>
           {/* Guest pages */}
           <Route path="/" element={<Home />} />
           <Route path="/guest/program-info" element={<ProgramInfo />} />
+          
           <Route path="/guest/login" element={<Login />} />
           <Route path="/guest/register" element={<Register />} />
+         
 
           {/* Student pages */}
           <Route
@@ -203,8 +196,7 @@ function AnimatedRoutes() {
           {/* Fallback for undefined routes */}
           <Route path="*" element={<Fallback />} />
         </Routes>
-      </motion.div>
-    </AnimatePresence>
+      
   );
 }
 
