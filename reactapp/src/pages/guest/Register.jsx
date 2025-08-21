@@ -2,7 +2,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { 
+  Box, 
+  Typography, 
+  Card, 
+  TextField, 
+  Button, 
+  Alert,
+  CircularProgress,
+  Container,
+  MenuItem,
+  Fade,
+} from "@mui/material";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -67,231 +78,242 @@ export default function Register() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
+    <Container 
+      maxWidth={false}
+      disableGutters
+      sx={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+      }}
+    >
+      <Fade in timeout={800}>
+        <Card
+          elevation={12}
+          sx={{
+            display: 'flex',
+            width: { xs: '100%', md: 900 },
+            maxWidth: 900,
+            borderRadius: 4,
+            overflow: 'hidden',
+            bgcolor: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
         {/* LEFT FORM */}
-        <div style={styles.formSection}>
-          <h1 style={styles.heading}>Register</h1>
-          <p style={styles.subheading}>Create your Studzz account</p>
-          <form onSubmit={handleRegister} style={styles.form}>
-            <input
-              type="text"
+        <Box
+          sx={{
+            flex: 1,
+            p: { xs: 3, md: 5 },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography 
+            variant="h4" 
+            fontWeight="bold" 
+            sx={{ 
+              mb: 1,
+              color: 'text.primary',
+              textAlign: 'center',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Join Studzz
+          </Typography>
+          <Typography 
+            variant="body1" 
+            color="text.secondary" 
+            sx={{ 
+              mb: 4,
+              textAlign: 'center',
+            }}
+          >
+            Create your account to get started
+          </Typography>
+          
+          <Box component="form" onSubmit={handleRegister} sx={{ width: '100%' }}>
+            <TextField
+              fullWidth
+              label="Username"
+              variant="outlined"
               name="username"
-              placeholder="Username"
               value={formData.username}
               onChange={handleChange}
               required
               disabled={loading}
-              style={styles.input}
+              sx={{ 
+                mb: 3,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                },
+              }}
             />
-            <input
+            <TextField
+              fullWidth
+              label="Email Address"
               type="email"
+              variant="outlined"
               name="email"
-              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
               required
               disabled={loading}
-              style={styles.input}
+              sx={{ 
+                mb: 3,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                },
+              }}
             />
-            <input
+            <TextField
+              fullWidth
+              label="Password"
               type="password"
+              variant="outlined"
               name="password"
-              placeholder="Password"
               value={formData.password}
               onChange={handleChange}
               required
               disabled={loading}
-              style={styles.input}
+              sx={{ 
+                mb: 3,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                },
+              }}
             />
-            <select
+            <TextField
+              fullWidth
+              select
+              label="Select Role"
+              variant="outlined"
               name="role"
               value={formData.role}
               onChange={handleChange}
               required
               disabled={loading}
-              style={{ ...styles.input, cursor: "pointer" }}
+              sx={{ 
+                mb: 3,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                },
+              }}
             >
-              <option value="">Select Role</option>
-              <option value="STUDENT">Student</option>
-              <option value="FACULTY">Faculty</option>
-            </select>
+              <MenuItem value="">Select Role</MenuItem>
+              <MenuItem value="STUDENT">Student</MenuItem>
+              <MenuItem value="FACULTY">Faculty</MenuItem>
+            </TextField>
 
-            {error && <p style={styles.error}>{error}</p>}
+            {error && (
+              <Alert severity="error" sx={{ mb: 3, borderRadius: 2 }}>
+                {error}
+              </Alert>
+            )}
 
-            <button
+            <Button
+              fullWidth
               type="submit"
-              style={{ ...styles.button, ...(loading && styles.buttonDisabled) }}
+              variant="contained"
+              size="large"
               disabled={loading}
+              sx={{
+                py: 1.5,
+                borderRadius: 2,
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                mb: 2,
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)',
+                },
+                '&:disabled': {
+                  background: 'grey.400',
+                },
+              }}
+              startIcon={loading && <CircularProgress size={20} color="inherit" />}
             >
-              {loading ? "Registering..." : "Register"}
-            </button>
-            <button
-              type="button"
+              {loading ? 'Creating Account...' : 'Create Account'}
+            </Button>
+            
+            <Button
+              fullWidth
+              variant="text"
               onClick={() => navigate("/guest/login")}
-              style={styles.registerButton}
+              sx={{
+                color: 'primary.main',
+                textTransform: 'none',
+                '&:hover': {
+                  bgcolor: 'primary.50',
+                },
+              }}
             >
-              Already have an account? Login
-            </button>
-          </form>
-        </div>
+              Already have an account? Sign In
+            </Button>
+          </Box>
+        </Box>
 
         {/* RIGHT IMAGE + LOGO SIDE */}
-        <div style={styles.imageSection}>
-          <Box sx={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-            <img
+        <Box
+          sx={{
+            flex: 1,
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            p: 4,
+            color: 'white',
+          }}
+        >
+          <Box sx={{ textAlign: 'center' }}>
+            <Box
+              component="img"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZuD36ufCWFNP56trvf_IPHh2vzgUdHKGJxQ&s"
               alt="Studzz Logo"
-              style={{
-                width: "clamp(140px, 20vw, 180px)",
-                height: "clamp(140px, 20vw, 180px)",
-                borderRadius: "50%",
-                marginBottom: "32px",
-                boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
-                border: "4px solid rgba(255,255,255,0.3)",
-                transition: "transform 0.4s ease, box-shadow 0.4s ease",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = "scale(1.08) rotate(4deg)";
-                e.currentTarget.style.boxShadow =
-                  "0 14px 55px rgba(0,0,0,0.6)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = "scale(1) rotate(0deg)";
-                e.currentTarget.style.boxShadow =
-                  "0 10px 40px rgba(0,0,0,0.5)";
+              sx={{
+                width: { xs: 120, md: 160 },
+                height: { xs: 120, md: 160 },
+                borderRadius: '50%',
+                mb: 3,
+                boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+                border: '4px solid rgba(255,255,255,0.3)',
+                transition: 'transform 0.4s ease',
+                '&:hover': {
+                  transform: 'scale(1.05) rotate(5deg)',
+                },
               }}
             />
             <Typography
-              variant="h2"
+              variant="h3"
               fontWeight="bold"
               sx={{
-                fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
+                fontSize: { xs: '2rem', md: '3rem' },
                 mb: 3,
-                color: "white",
-                textShadow: "0 3px 10px rgba(0,0,0,0.35)",
-                letterSpacing: "2px",
+                textShadow: '0 3px 8px rgba(0,0,0,0.3)',
               }}
             >
               Studzz
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="h6"
               sx={{
-                fontSize: { xs: "1.1rem", md: "1.25rem" },
-                color: "rgba(255,255,255,0.9)",
-                textAlign: "center",
-                maxWidth: "360px",
-                fontWeight: 300,
-                letterSpacing: "0.6px",
+                opacity: 0.9,
+                maxWidth: 300,
+                mx: 'auto',
                 lineHeight: 1.6,
-                margin: "0 auto",
               }}
             >
               Simplifying Education, Empowering Growth
             </Typography>
           </Box>
-        </div>
-      </div>
-    </div>
+        </Box>
+        </Card>
+      </Fade>
+    </Container>
   );
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    padding: "20px",
-    fontFamily: "'Inter', sans-serif",
-  },
-  card: {
-    display: "flex",
-    width: "900px",
-    maxWidth: "100%",
-    borderRadius: "24px",
-    overflow: "hidden",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
-    background: "rgba(255, 255, 255, 0.95)",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(255, 255, 255, 0.2)",
-  },
-  formSection: {
-    flex: 1,
-    padding: "50px 40px",
-  },
-  heading: {
-    fontSize: "32px",
-    marginBottom: "10px",
-    fontWeight: "700",
-    color: "#2d3748",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-  },
-  subheading: {
-    fontSize: "16px",
-    marginBottom: "40px",
-    color: "#4a5568",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  input: {
-    padding: "16px 20px",
-    marginBottom: "20px",
-    borderRadius: "10px",
-    border: "2px solid #e2e8f0",
-    fontSize: "16px",
-    outline: "none",
-    transition: "all 0.3s",
-    background: "rgba(255, 255, 255, 0.9)",
-  },
-  button: {
-    padding: "16px",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    border: "none",
-    borderRadius: "10px",
-    color: "#fff",
-    fontSize: "16px",
-    fontWeight: "600",
-    cursor: "pointer",
-    marginBottom: "12px",
-    transition: "all 0.3s ease",
-  },
-  buttonDisabled: {
-    background: "#a0aec0",
-    cursor: "not-allowed",
-  },
-  registerButton: {
-    background: "transparent",
-    border: "none",
-    color: "#667eea",
-    cursor: "pointer",
-    textDecoration: "underline",
-    fontSize: "14px",
-    fontWeight: "500",
-    transition: "color 0.3s ease",
-  },
-  error: {
-    color: "#e53e3e",
-    marginBottom: "15px",
-    fontSize: "14px",
-    background: "rgba(229, 62, 62, 0.1)",
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid rgba(229, 62, 62, 0.2)",
-  },
-  imageSection: {
-    flex: 1,
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    padding: "40px",
-  },
-};
