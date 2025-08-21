@@ -1,4 +1,5 @@
-/* Modern CSS Reset and Base Styles */
+
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #cfedff; /* Tailwind's blue-600 */
+
   min-height: 100vh;
   line-height: 1.6;
 }
