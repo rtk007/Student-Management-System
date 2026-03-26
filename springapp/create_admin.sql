@@ -1,0 +1,1 @@
+"INSERT INTO users (username, email, password_hash, role, institution_id, created_date, is_active, email_verified) VALUES ('Admin', 'admin@examly.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ADMIN', 1, NOW(), true, true);" 
